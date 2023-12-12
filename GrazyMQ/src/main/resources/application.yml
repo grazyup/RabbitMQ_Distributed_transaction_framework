@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/rabbitmqdemo?serverTimeZone=UTC
+      username: root
+      password: 250628
+
+MQ:
+  service: orderService
+  host: 127.0.0.1
+  port: 5672
+  username: guest
+  password: guest
+  vhost: /
+  resendTimes: 5
+  resendFreq: 5000
