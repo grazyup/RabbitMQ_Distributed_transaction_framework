@@ -27,7 +27,14 @@ public abstract class AbstractMessageListener implements ChannelAwareMessageList
     @Resource
     private TransMessageService transMessageService;
 
+
+    /**
+     * 下沉到具体业务处理
+     *
+     * @param message
+     */
     public abstract void receiveMessage (Message message);
+
 
     @Override
     public void onMessage(Message message, Channel channel) throws IOException, InterruptedException {

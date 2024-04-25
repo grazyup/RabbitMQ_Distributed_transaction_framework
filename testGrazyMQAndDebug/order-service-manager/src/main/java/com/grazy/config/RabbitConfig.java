@@ -4,7 +4,6 @@ import com.grazy.service.OrderMessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -107,7 +106,7 @@ public class RabbitConfig {
         container.setQueueNames("queue.order");
         container.setExposeListenerChannel(true);
         container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
-        //监听并处理业务
+        //监听并处理业务(使用的是【普通版】的手动处理消息确认，orderMessageService 实现了 ChannelAwareMessageListener )
         container.setMessageListener(orderMessageService);
         return container;
     }
